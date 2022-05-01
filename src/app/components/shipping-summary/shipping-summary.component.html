@@ -1,0 +1,7 @@
+<div class="shipping-summary">
+  <p class="summary-header">Summary:</p>
+  <p *ngIf="isStarterBoxPage">Starter Boxes: {{ starterBoxCount }}</p>
+  <p *ngIf="isStarterBoxPage">Brushes: {{ toothbrushesCount }}</p>
+  <p *ngIf="!isStarterBoxPage">Refill Boxes: {{ refillBoxCount }}</p>
+  <p>Replacement Heads: {{ replacementHeadCount }}</p>
+</div>

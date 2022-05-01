@@ -11,9 +11,7 @@ export class ManagerShippingComponent implements OnInit {
 
   familyPatientList: Patient[] = [];
 
-  constructor(private patientService: PatientService) {
-
-  }
+  constructor(private patientService: PatientService) {}
 
   ngOnInit() {
     this.patientService.retrievePatientsForShipping().subscribe((familyPatientList) => {
