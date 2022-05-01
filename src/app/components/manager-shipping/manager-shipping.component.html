@@ -7,7 +7,7 @@
 
     <mat-tab-group animationDuration="0ms">
       <mat-tab label="Starter Boxes" class="tab-header">
-        <bk-starter-boxes [familyPatientList]="familyPatientList"></bk-starter-boxes>
+        <bk-starter-boxes [familyPatientList]="familyPatientList | async"></bk-starter-boxes>
       </mat-tab>
       <mat-tab label="Refill Boxes" class="tab-header">
         <bk-refill-boxes></bk-refill-boxes>

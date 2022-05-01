@@ -10,5 +10,4 @@ export class StarterBoxesComponent {
 
   @Input() familyPatientList: Patient[];
 
-
 }

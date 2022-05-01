@@ -1,4 +1,8 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import {
+      Component,
+      OnInit,
+      Input
+} from '@angular/core';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
 
@@ -22,8 +26,7 @@ export class ShippingSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.patientService.retrievePatientsForShipping().subscribe((familyPatientList) => {
-      const unique = [...new Set(familyPatientList.map((patient: Patient) => patient.brush_color))];
-      this.starterBoxCount = unique.length;
+      this.starterBoxCount = Math.ceil(familyPatientList.length / 2);
       this.toothbrushesCount = familyPatientList.length;
       this.replacementHeadCount = familyPatientList.length;
       this.refillBoxCount = Math.ceil(this.toothbrushesCount / 4);

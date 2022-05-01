@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { PatientService } from '../../services/patient.service';
 import { Patient } from '../../models/patient.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'bk-manager-shipping',
@@ -9,13 +10,13 @@ import { Patient } from '../../models/patient.model';
 })
 export class ManagerShippingComponent implements OnInit {
 
-  familyPatientList: Patient[] = [];
+  familyPatientList: BehaviorSubject<Patient[]> = new BehaviorSubject<Patient[]>([]);
 
   constructor(private patientService: PatientService) {}
 
   ngOnInit() {
     this.patientService.retrievePatientsForShipping().subscribe((familyPatientList) => {
-      this.familyPatientList = familyPatientList;
+      this.familyPatientList.next(familyPatientList);
     });
   }
 
