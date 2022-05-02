@@ -2,7 +2,7 @@
   <div class="box" *ngFor="let box of displayBoxes | async; let i = index">
         <div *ngFor="let brush of box.brushes" class="brush">
           <div class="info">
-            <div><span class="dot" [ngClass]="{ 'blue-pip': brush.color === 'blue', 'green-pip': brush.color === 'green','pink-pip': brush.color === 'pink'  }">
+            <div *ngIf="brush.brushCount > 0"><span class="dot" [ngClass]="{ 'blue-pip': brush.color === 'blue', 'green-pip': brush.color === 'green','pink-pip': brush.color === 'pink'  }">
             </span>Brushes: {{ brush.brushCount }}</div> <br>
             <div><span class="dot" [ngClass]="{ 'blue-pip': brush.color === 'blue', 'green-pip': brush.color === 'green','pink-pip': brush.color === 'pink'  }">
             </span>Replacement Heads: {{ brush.replacementBrushCount }}</div>

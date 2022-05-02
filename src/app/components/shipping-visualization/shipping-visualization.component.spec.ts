@@ -77,7 +77,7 @@ describe('ShippingVisualizationComponent', () => {
   });
 
   describe('ngOnInit', () => {
-    it('should display boxes with count correctly', () => {
+    it('should display starter boxes with count correctly', () => {
       let expectedColorSortedList = [
         { id: 2, name: 'Anakin', brush_color: 'blue', primary_insured_id: null, contract_effective_date: '2018-01-01' },
         { id: 4, name: 'Luke', brush_color: 'blue', primary_insured_id: 2, contract_effective_date: '' },
@@ -92,9 +92,22 @@ describe('ShippingVisualizationComponent', () => {
         { brushes: [ { color: 'green', replacementBrushCount: 2, brushCount: 2 } ] },
         { brushes: [ { color: 'orange', replacementBrushCount: 1, brushCount: 1 }, { color: 'pink', replacementBrushCount: 1, brushCount: 1 } ] }
       ]
+        component.isFromStarter = true;
         component.ngOnInit();
         expect(component.starterBoxCount).toBe(3);
         expect(component.colorSortedList).toEqual(expectedColorSortedList);
+        expect(component.displayBoxes.getValue()).toEqual(expectedDisplayBoxes);
+    });
+
+    it('should display refill boxes with count correctly', () => {
+
+      let expectedDisplayBoxes = [
+        { brushes: [ { color: 'blue', replacementBrushCount: 2, brushCount: 0 }, { color: 'green', replacementBrushCount: 2, brushCount: 0 }  ] },
+        { brushes: [ { color: 'orange', replacementBrushCount: 1, brushCount: 0 }, { color: 'pink', replacementBrushCount: 1, brushCount: 0 } ] }
+      ]
+        component.isFromStarter = false;
+        component.ngOnInit();
+        expect(component.starterBoxCount).toBe(3);
         expect(component.displayBoxes.getValue()).toEqual(expectedDisplayBoxes);
     });
   });
